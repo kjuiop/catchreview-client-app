@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 
 /** https://nextjs.org/docs/advanced-features/dynamic-import#with-no-ssr */
 // 서버에서 SSR 을 하지 않도록 옵션을 줄 수 있음.
-const NoSSR = dynamic(() => import('../../../components/section1/NoSSR'), {
+const NoSSR = dynamic(() => import('../../components/section1/NoSSR'), {
     ssr: false,
 });
 
