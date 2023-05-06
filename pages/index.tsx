@@ -5,6 +5,7 @@ import styles from '../styles/header.module.scss';
 import Link from 'next/link'
 import {AiOutlineShareAlt} from "react-icons/ai";
 import {VscFeedback} from "react-icons/vsc";
+import MapSection from '../components/home/MapSection'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,7 +27,9 @@ export default function Home() {
                 <VscFeedback size={20} />
             </Link>
         ]}/>
-        <main></main>
+        <main style={{ width: '100%', height: '100%' }}>
+            <MapSection />
+        </main>
     </Fragment>
   )
 }
