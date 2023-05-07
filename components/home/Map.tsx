@@ -11,6 +11,12 @@ type Props = {
     onLoad?: (map: NaverMap) => void;
 };
 
+declare global {
+    interface Window {
+        naver: any;
+    }
+}
+
 const Map = ({
                  mapId = 'map',
                  initialCenter = INITIAL_CENTER,
@@ -27,7 +33,7 @@ const Map = ({
             scaleControl: false,
             mapDataControl: false,
             logoControlOptions: {
-                position: naver.maps.Position.BOTTOM_LEFT,
+                position: window.naver.maps.Position.BOTTOM_LEFT,
             },
         };
 
