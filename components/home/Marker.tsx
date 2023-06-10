@@ -15,6 +15,7 @@ const Marker = ({ map, coordinates, icon, onClick }: Marker): null => {
             });
         }
 
+        // onClick 이벤트가 발생할 경우 네이버의 addListener 함수를 실행시킨다.
         if (onClick) {
             naver.maps.Event.addListener(marker, 'click', onClick);
         }
