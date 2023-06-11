@@ -1,13 +1,28 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import type { Store } from '../types/store';
+import styles from '../styles/detail.module.scss';
+import DetailHeader from '../components/home/DetailHeader';
+import DetailContent from '../components/home/DetailContent';
 
 interface Props {
     store: Store;
 }
 
 const StoreDetail: NextPage<Props> = ({ store }) => {
-    return <div>name: {store.name}</div>;
+    const expanded = true;
+
+    return (
+        <div className={`${styles.detailSection} ${styles.selected} ${styles.expanded}`}>
+            <DetailHeader
+                currentStore={store}
+                expanded={expanded}
+                onClickArrow={() => null}
+            />
+            <DetailContent currentStore={store} expanded={expanded} />
+        </div>
+    );
 };
+
 export default StoreDetail;
 
 // 파일의 name 에 어떤 name 들이 올 수 있는지 알려주는 기능
