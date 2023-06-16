@@ -6,6 +6,7 @@ import useCurrentStore from "../../hooks/useCurrentStore";
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 import {Coordinates} from "../../types/store";
+import ignore from "ignore";
 
 const MapSection = () => {
     // initial zoom, center from url query
@@ -30,6 +31,7 @@ const MapSection = () => {
     const { clearCurrentStore } = useCurrentStore();
     const onLoadMap = (map: NaverMap) => {
         initializeMap(map);
+        // @ts-ignore
         naver.maps.Event.addListener(map, 'click', clearCurrentStore);
     };
 

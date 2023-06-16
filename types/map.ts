@@ -12,7 +12,10 @@ export type Marker = {
 
 export type ImageIcon = {
     url: string;
+    // @ts-ignore
     size: naver.maps.Size;
+    // @ts-ignore
     origin: naver.maps.Point;
+    // @ts-ignore
     scaledSize?: naver.maps.Size;
 };
