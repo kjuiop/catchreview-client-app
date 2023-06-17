@@ -11,6 +11,7 @@ export default function Home() {
             <NextSeo
                 title="피드백"
                 description="가게에 대한 리뷰를 작성하고 공유하는 소셜 커뮤니티입니다."
+                canonical="https://catchreview-client-app.vercel.app/feedback"
             />
             <Header />
             <main></main>

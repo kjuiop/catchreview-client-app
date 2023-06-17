@@ -12,8 +12,6 @@ interface Props {
 }
 
 const Home: NextPage<Props> = ({ stores }) => {
-    // console.log("stores: ", stores);
-
     const { initializeStores } = useStores();
 
     useEffect(() => {
@@ -25,6 +23,7 @@ const Home: NextPage<Props> = ({ stores }) => {
             <NextSeo
                 title="매장 지도"
                 description="가게에 대한 리뷰를 작성하고 공유하는 소셜 커뮤니티입니다."
+                canonical="https://catchreview-client-app.vercel.app"
             />
             <Header />
             <main style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden'}}>
@@ -38,7 +37,9 @@ export default Home;
 
 export async function getStaticProps() {
     // todo: next api routes 로 불러오기
-    const stores = (await import('../public/store.json')).default;
+    const stores = await fetch('' +
+        `${process.env.NEXT_PUBLIC_API_URL}/api/stores`)
+        .then((response) => response.json());
 
     // revalidate : 1시간, reloading 하는 주기
     return {
