@@ -37,7 +37,9 @@ export default Home;
 
 export async function getStaticProps() {
     // todo: next api routes 로 불러오기
-    const stores = await fetch('http://localhost:3000/api/stores').then((response) => response.json());
+    const stores = await fetch('' +
+        `${process.env.NEXT_PUBLIC_API_URL}/api/stores`)
+        .then((response) => response.json());
 
     // revalidate : 1시간, reloading 하는 주기
     return {
