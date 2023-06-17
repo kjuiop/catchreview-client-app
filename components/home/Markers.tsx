@@ -66,8 +66,11 @@ export function generateStoreMarkerIcon(
     // size 는 하나의 마커의 size
     return {
         url: isSelected ? 'images/markers-selected.png' : 'images/markers.png',
+        // @ts-ignore
         size: new naver.maps.Size(SCALED_MARKER_WIDTH, SCALED_MARKER_HEIGHT),
+        // @ts-ignore
         origin: new naver.maps.Point(SCALED_MARKER_WIDTH * markerIndex, 0),
+        // @ts-ignore
         scaledSize: new naver.maps.Size(
             SCALED_MARKER_WIDTH * NUMBER_OF_MARKER,
             SCALED_MARKER_HEIGHT
