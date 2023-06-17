@@ -15,7 +15,7 @@ const Home: NextPage<Props> = ({ stores }) => {
     // console.log("stores: ", stores);
 
     useEffect(() => {
-        fetch('/api/hello').then((response) => response.json().then(console.log));
+        fetch('/api/stores').then((response) => response.json().then(console.log));
     }, []);
 
     const { initializeStores } = useStores();
