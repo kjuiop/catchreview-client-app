@@ -12,8 +12,6 @@ interface Props {
 }
 
 const Home: NextPage<Props> = ({ stores }) => {
-    // console.log("stores: ", stores);
-
     const { initializeStores } = useStores();
 
     useEffect(() => {
@@ -39,7 +37,9 @@ export default Home;
 
 export async function getStaticProps() {
     // todo: next api routes 로 불러오기
-    const stores = (await import('../public/store.json')).default;
+    const stores = await fetch('' +
+        `${process.env.NEXT_PUBLIC_API_URL}/api/stores`)
+        .then((response) => response.json());
 
     // revalidate : 1시간, reloading 하는 주기
     return {
