@@ -23,7 +23,7 @@ const Home: NextPage<Props> = ({ stores }) => {
     return (
         <Fragment>
             <NextSeo
-                title="Catch Review"
+                title="매장 지도"
                 description="가게에 대한 리뷰를 작성하고 공유하는 소셜 커뮤니티입니다."
             />
             <Header />
