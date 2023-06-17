@@ -5,6 +5,8 @@ import DetailHeader from '../components/home/DetailHeader';
 import DetailContent from '../components/home/DetailContent';
 import {useRouter} from "next/router";
 import useCurrentStore from "../hooks/useCurrentStore";
+import {NextSeo} from "next-seo";
+import Header from "../components/common/Header";
 
 interface Props {
     store: Store;
@@ -24,14 +26,21 @@ const StoreDetail: NextPage<Props> = ({ store }) => {
     };
 
     return (
-        <div className={`${styles.detailSection} ${styles.selected} ${styles.expanded}`}>
-            <DetailHeader
-                currentStore={store}
-                expanded={expanded}
-                onClickArrow={goToMap}
+        <>
+            <NextSeo
+                title={store.name}
+                description="가게에 대한 리뷰를 작성하고 공유하는 소셜 커뮤니티입니다."
+                canonical={`https://catchreview-client-app.vercel.app/${store.name}`}
             />
-            <DetailContent currentStore={store} expanded={expanded} />
-        </div>
+            <div className={`${styles.detailSection} ${styles.selected} ${styles.expanded}`}>
+                <DetailHeader
+                    currentStore={store}
+                    expanded={expanded}
+                    onClickArrow={goToMap}
+                />
+                <DetailContent currentStore={store} expanded={expanded} />
+            </div>
+        </>
     );
 };
 
