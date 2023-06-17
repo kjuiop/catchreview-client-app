@@ -36,10 +36,9 @@ const Home: NextPage<Props> = ({ stores }) => {
 export default Home;
 
 export async function getStaticProps() {
-    const stores = (await import('../public/store.json')).default;
-    // const stores = await fetch('' +
-    //     `${process.env.NEXT_PUBLIC_API_URL}/api/stores`)
-    //     .then((response) => response.json());
+    const stores = await fetch('' +
+        `${process.env.NEXT_PUBLIC_API_URL}/api/stores`)
+        .then((response) => response.json());
 
     // revalidate : 1시간, reloading 하는 주기
     return {
