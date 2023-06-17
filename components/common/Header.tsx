@@ -23,7 +23,8 @@ const HeaderComponent = ({ onClickLogo, rightElements }: Props) => {
                         width={110}
                         height={20}
                         alt="인프런 로고"
-                        priority
+                        // LCP 와 관련된 이미지는 네이버지도 이미지이므로 로고 이미지에 priority 는 사용하지 않는다.
+                        // priority
                     />
                 </Link>
             </div>

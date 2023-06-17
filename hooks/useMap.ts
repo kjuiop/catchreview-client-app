@@ -19,6 +19,7 @@ const useMap = () => {
     // map.morph 을 실행하면 map 의 initial_center 와 initial_zoom 을 좌표로 naver 지도를 변경한다.
     const resetMapOptions = useCallback(() => {
         /** https://navermaps.github.io/maps.js.ncp/docs/naver.maps.Map.html#morph__anchor */
+        // @ts-ignore
         map.morph(new naver.maps.LatLng(...INITIAL_CENTER), INITIAL_ZOOM);
     }, [map]);
 
