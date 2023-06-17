@@ -25,6 +25,7 @@ const Home: NextPage<Props> = ({ stores }) => {
             <NextSeo
                 title="매장 지도"
                 description="가게에 대한 리뷰를 작성하고 공유하는 소셜 커뮤니티입니다."
+                canonical="https://catchreview-client-app.vercel.app"
             />
             <Header />
             <main style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden'}}>
