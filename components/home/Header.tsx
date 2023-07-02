@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import copy from 'copy-to-clipboard';
 import styles from '../../styles/header.module.scss';
 import Header from '../common/Header';
-import useMap from '../../hooks/useMap';
+import useMap from '../../hooks/map/useMap';
 import { AiOutlineShareAlt } from 'react-icons/ai';
 import { VscFeedback } from 'react-icons/vsc';
 
