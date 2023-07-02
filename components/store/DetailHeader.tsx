@@ -1,5 +1,5 @@
-import styles from '../../styles/detail.module.scss';
-import headerStyles from '../../styles/header.module.scss';
+import styles from '../../styles/store/detail.module.scss';
+import headerStyles from '../../styles/home/header.module.scss';
 import { IoIosArrowUp } from 'react-icons/io';
 import { AiOutlineShareAlt } from 'react-icons/ai';
 import type { Store } from '../../types/store';

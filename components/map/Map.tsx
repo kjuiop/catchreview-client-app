@@ -3,7 +3,7 @@ import Script from 'next/script';
 import { Coordinates } from '../../types/store';
 import { NaverMap } from '../../types/map';
 import { INITIAL_CENTER, INITIAL_ZOOM } from '../../hooks/map/useMap';
-import styles from '../../styles/map.module.scss';
+import styles from '../../styles/map/map.module.scss';
 
 type Props = {
     mapId?: string;

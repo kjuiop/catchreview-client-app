@@ -1,4 +1,4 @@
-import styles from '../../styles/detail.module.scss';
+import styles from '../../styles/store/detail.module.scss';
 import { IoIosArrowUp } from 'react-icons/io';
 import useSWR from "swr";
 import {CURRENT_STORE_KEY} from "../../hooks/store/useCurrentStore";

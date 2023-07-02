@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import type { Store } from '../types/store';
-import styles from '../styles/detail.module.scss';
+import styles from '../styles/store/detail.module.scss';
 import DetailHeader from '../components/store/DetailHeader';
 import DetailContent from '../components/store/DetailContent';
 import {useRouter} from "next/router";

@@ -2,7 +2,7 @@ import Image from 'next/image';
 import type { Store } from '../../types/store';
 import Naver from 'public/images/naver.png';
 import { IoCallOutline, IoLocationOutline } from 'react-icons/io5';
-import styles from '../../styles/detail.module.scss';
+import styles from '../../styles/store/detail.module.scss';
 
 type Props = {
     currentStore?: Store;
