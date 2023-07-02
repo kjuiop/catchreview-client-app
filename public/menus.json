@@ -1,13 +1,13 @@
 [
   {
     "nid": 1,
-    "name": "church",
-    "url": "/church"
+    "name": "store",
+    "url": "/store"
   },
   {
     "nid": 2,
-    "name": "book",
-    "url": "/book"
+    "name": "review",
+    "url": "/review"
   },
   {
     "nid": 3,

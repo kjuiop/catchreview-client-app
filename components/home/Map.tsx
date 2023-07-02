@@ -33,9 +33,9 @@ const Map = ({
             minZoom: 9,
             scaleControl: false,
             mapDataControl: false,
-            logoControlOptions: {
-                position: window.naver.maps.Position.BOTTOM_LEFT,
-            },
+            // logoControlOptions: {
+            //     position: window.naver.maps.Position.BOTTOM_LEFT,
+            // },
         };
 
         /** https://navermaps.github.io/maps.js.ncp/docs/tutorial-2-Getting-Started.html */

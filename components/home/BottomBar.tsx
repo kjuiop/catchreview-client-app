@@ -1,9 +1,9 @@
 import styles from '../../styles/home/bottom.module.scss';
 import {
-    IoBookOutline,
-    IoBookSharp,
-    IoEarthOutline,
-    IoEarthSharp,
+    IoStorefrontSharp,
+    IoStorefrontOutline,
+    IoPawSharp,
+    IoPawOutline,
     IoPersonOutline,
     IoPersonSharp
 } from "react-icons/io5";
@@ -40,7 +40,7 @@ const BottomBar = () => {
                                         setCurrentMenuId(menu.nid);
                                     }}
                                 >
-                                    {menu.nid === 1 ? <ChurchIcon selected={isSelected} /> : null}
+                                    {menu.nid === 1 ? <StoreIcon selected={isSelected} /> : null}
                                     {menu.nid === 2 ? <QuiteTimeIcon selected={isSelected} /> : null}
                                     {menu.nid === 3 ? <MemberIcon selected={isSelected} /> : null}
                                 </div>
@@ -54,10 +54,10 @@ const BottomBar = () => {
 };
 export default BottomBar;
 
-const ChurchIcon = ({ selected }: Props) => {
+const StoreIcon = ({ selected }: Props) => {
     return (
         <>
-            {selected ? <IoEarthSharp size={20} /> :  <IoEarthOutline size={20} />}
+            {selected ? <IoStorefrontSharp size={20} /> :  <IoStorefrontOutline size={20} />}
         </>
     );
 }
@@ -65,7 +65,7 @@ const ChurchIcon = ({ selected }: Props) => {
 const QuiteTimeIcon = ({ selected }: Props) => {
     return (
         <>
-            {selected ? <IoBookSharp size={20} /> :  <IoBookOutline size={20} />}
+            {selected ? <IoPawSharp size={20} /> :  <IoPawOutline size={20} />}
         </>
     );
 }
