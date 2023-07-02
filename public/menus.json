@@ -2,7 +2,7 @@
   {
     "nid": 1,
     "name": "store",
-    "url": "/store"
+    "url": "/"
   },
   {
     "nid": 2,
@@ -12,6 +12,6 @@
   {
     "nid": 3,
     "name": "member",
-    "url": "/member"
+    "url": "/login"
   }
 ]

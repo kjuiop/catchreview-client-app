@@ -7,6 +7,7 @@ import {
     IoPersonOutline,
     IoPersonSharp
 } from "react-icons/io5";
+import Link from 'next/link';
 import {useState} from "react";
 import {MENU_KEY} from "../../hooks/menu/useMenus";
 import useSWR from "swr";
@@ -40,9 +41,9 @@ const BottomBar = () => {
                                         setCurrentMenuId(menu.nid);
                                     }}
                                 >
-                                    {menu.nid === 1 ? <StoreIcon selected={isSelected} /> : null}
-                                    {menu.nid === 2 ? <QuiteTimeIcon selected={isSelected} /> : null}
-                                    {menu.nid === 3 ? <MemberIcon selected={isSelected} /> : null}
+                                    {menu.nid === 1 ? <Link href={menu.url}><StoreIcon selected={isSelected} /></Link> : null}
+                                    {menu.nid === 2 ? <Link href={menu.url}><ReviewIcon selected={isSelected} /></Link> : null}
+                                    {menu.nid === 3 ? <Link href={menu.url}><MemberIcon selected={isSelected} /></Link> : null}
                                 </div>
                             )
                         })
@@ -62,7 +63,7 @@ const StoreIcon = ({ selected }: Props) => {
     );
 }
 
-const QuiteTimeIcon = ({ selected }: Props) => {
+const ReviewIcon = ({ selected }: Props) => {
     return (
         <>
             {selected ? <IoPawSharp size={20} /> :  <IoPawOutline size={20} />}
