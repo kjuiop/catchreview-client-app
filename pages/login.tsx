@@ -2,6 +2,7 @@ import {Inter} from '@next/font/google'
 import { Fragment, useEffect } from 'react';
 import Header from '../components/common/Header'
 import { NextSeo } from "next-seo";
+import BottomBar from "../components/home/BottomBar";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,6 +16,7 @@ export default function Home() {
             />
             <Header />
             <main></main>
+            {/*<BottomBar />*/}
         </Fragment>
     )
 }
