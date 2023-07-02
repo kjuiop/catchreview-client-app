@@ -1,0 +1,17 @@
+[
+  {
+    "nid": 1,
+    "name": "church",
+    "url": "/church"
+  },
+  {
+    "nid": 2,
+    "name": "book",
+    "url": "/book"
+  },
+  {
+    "nid": 3,
+    "name": "member",
+    "url": "/member"
+  }
+]
