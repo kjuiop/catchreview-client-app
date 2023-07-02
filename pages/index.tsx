@@ -1,7 +1,7 @@
 import {Fragment, useEffect} from 'react';
 import Header from '../components/home/Header';
-import MapSection from '../components/home/MapSection';
-import DetailSection from '../components/home/DetailSection';
+import MapSection from '../components/map/MapSection';
+import DetailSection from '../components/store/DetailSection';
 import {NextPage} from "next";
 import {Store} from '../types/store';
 import {Menu} from "../types/menu";
