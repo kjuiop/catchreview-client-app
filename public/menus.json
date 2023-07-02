@@ -1,0 +1,17 @@
+[
+  {
+    "nid": 1,
+    "name": "store",
+    "url": "/"
+  },
+  {
+    "nid": 2,
+    "name": "review",
+    "url": "/review"
+  },
+  {
+    "nid": 3,
+    "name": "member",
+    "url": "/login"
+  }
+]

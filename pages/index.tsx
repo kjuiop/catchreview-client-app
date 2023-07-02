@@ -1,22 +1,31 @@
 import {Fragment, useEffect} from 'react';
 import Header from '../components/home/Header';
-import MapSection from '../components/home/MapSection'
-import DetailSection from '../components/home/DetailSection'
+import MapSection from '../components/map/MapSection';
+import DetailSection from '../components/store/DetailSection';
 import {NextPage} from "next";
 import {Store} from '../types/store';
-import useStores from '../hooks/useStores'
-import { NextSeo } from 'next-seo'
+import {Menu} from "../types/menu";
+import useStores from '../hooks/store/useStores';
+import { NextSeo } from 'next-seo';
+import useMenus from "..//hooks/menu/useMenus";
+import BottomBar from "../components/home/BottomBar";
 
 interface Props {
-    stores: Store[]
+    stores: Store[],
+    menus: Menu[];
 }
 
-const Home: NextPage<Props> = ({ stores }) => {
+const Home: NextPage<Props> = ({ stores, menus }) => {
     const { initializeStores } = useStores();
+    const { initializeMenus } = useMenus();
 
     useEffect(() => {
         initializeStores(stores);
     }, [initializeStores, stores]);
+
+    useEffect( () => {
+        initializeMenus(menus);
+    }, [initializeMenus, menus]);
 
     return (
         <Fragment>
@@ -30,19 +39,21 @@ const Home: NextPage<Props> = ({ stores }) => {
                 <MapSection />
                 <DetailSection />
             </main>
+            <BottomBar />
         </Fragment>
     );
 };
 export default Home;
 
 export async function getStaticProps() {
+    const menus = (await import('../public/menus.json')).default;
     const stores = await fetch('' +
         `${process.env.NEXT_PUBLIC_API_URL}/api/stores`)
         .then((response) => response.json());
 
     // revalidate : 1시간, reloading 하는 주기
     return {
-        props: { stores },
+        props: { stores, menus },
         revalidate: 60 * 60,
     };
 }

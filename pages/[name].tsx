@@ -1,10 +1,10 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import type { Store } from '../types/store';
-import styles from '../styles/detail.module.scss';
-import DetailHeader from '../components/home/DetailHeader';
-import DetailContent from '../components/home/DetailContent';
+import styles from '../styles/store/detail.module.scss';
+import DetailHeader from '../components/store/DetailHeader';
+import DetailContent from '../components/store/DetailContent';
 import {useRouter} from "next/router";
-import useCurrentStore from "../hooks/useCurrentStore";
+import useCurrentStore from "../hooks/store/useCurrentStore";
 import {NextSeo} from "next-seo";
 import Header from "../components/common/Header";
 
