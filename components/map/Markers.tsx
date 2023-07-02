@@ -1,11 +1,11 @@
 import React from 'react';
 import useSWR from 'swr';
-import { MAP_KEY } from '../../hooks/useMap';
-import { STORE_KEY } from '../../hooks/useStores';
+import { MAP_KEY } from '../../hooks/map/useMap';
+import { STORE_KEY } from '../../hooks/store/useStores';
 import type { ImageIcon, NaverMap } from '../../types/map';
 import type { Store } from '../../types/store';
 import Marker from './Marker';
-import useCurrentStore, {CURRENT_STORE_KEY} from "../../hooks/useCurrentStore";
+import useCurrentStore, {CURRENT_STORE_KEY} from "../../hooks/store/useCurrentStore";
 
 const Markers = () => {
     // useSWR 을 이용하면 전역상태로 데이터를 관리할 수 있음.

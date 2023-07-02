@@ -1,8 +1,8 @@
 import Map from './Map';
-import useMap, {INITIAL_CENTER, INITIAL_ZOOM} from '../../hooks/useMap';
+import useMap, {INITIAL_CENTER, INITIAL_ZOOM} from '../../hooks/map/useMap';
 import type { NaverMap } from '../../types/map'
 import Markers from './Markers'
-import useCurrentStore from "../../hooks/useCurrentStore";
+import useCurrentStore from "../../hooks/store/useCurrentStore";
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 import {Coordinates} from "../../types/store";

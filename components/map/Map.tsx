@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import Script from 'next/script';
 import { Coordinates } from '../../types/store';
 import { NaverMap } from '../../types/map';
-import { INITIAL_CENTER, INITIAL_ZOOM } from '../../hooks/useMap';
-import styles from '../../styles/map.module.scss';
+import { INITIAL_CENTER, INITIAL_ZOOM } from '../../hooks/map/useMap';
+import styles from '../../styles/map/map.module.scss';
 
 type Props = {
     mapId?: string;
@@ -33,9 +33,9 @@ const Map = ({
             minZoom: 9,
             scaleControl: false,
             mapDataControl: false,
-            logoControlOptions: {
-                position: window.naver.maps.Position.BOTTOM_LEFT,
-            },
+            // logoControlOptions: {
+            //     position: window.naver.maps.Position.BOTTOM_LEFT,
+            // },
         };
 
         /** https://navermaps.github.io/maps.js.ncp/docs/tutorial-2-Getting-Started.html */
