@@ -25,9 +25,9 @@ const Login: NextPage<Props> = ({ menus }) => {
                     <table className={styles.loginTable}>
                         <thead>
                             <Image
-                                src='/logo.jpeg'
+                                src='/banner.jpeg'
                                 alt='momssi-logo'
-                                width={200}
+                                width={240}
                                 height={220}
                             />
                         </thead>
