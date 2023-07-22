@@ -13,7 +13,7 @@ const HeaderComponent = ({ onClickLogo, rightElements }: Props) => {
         <header className={styles.header}>
             <div className={styles.flexItem}>
                 <Link
-                    href="/"
+                    href={`/`}
                     onClick={onClickLogo}
                     className={styles.box}
                     aria-label="홈으로 이동"
