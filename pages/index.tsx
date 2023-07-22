@@ -7,8 +7,8 @@ import {Store} from '../types/store';
 import {Menu} from "../types/menu";
 import useStores from '../hooks/store/useStores';
 import { NextSeo } from 'next-seo';
-import useMenus from "..//hooks/menu/useMenus";
-import BottomBar from "../components/home/BottomBar";
+import useMenus from "../hooks/menu/useMenus";
+import BottomBar from '../components/home/BottomBar';
 
 interface Props {
     stores: Store[],
