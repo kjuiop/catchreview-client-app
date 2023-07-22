@@ -50,7 +50,7 @@ const Login: NextPage<Props> = ({ menus }) => {
                         <tr>
                             <td>
                                 <ol>
-                                    <li><a href="#">회원가입</a></li>
+                                    <li><a href="/sign-up">회원가입</a></li>
                                     <li><a href="#">아이디/비밀번호 찾기</a></li>
                                 </ol>
                             </td>
