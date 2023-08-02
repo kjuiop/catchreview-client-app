@@ -36,7 +36,7 @@ const HomeHeader = () => {
                     <AiOutlineShareAlt size={20} />
                 </button>,
                 <Link
-                    href="/feedback"
+                    href={`/feedback`}
                     className={styles.box}
                     key="link"
                     aria-label="피드백 페이지로 이동"

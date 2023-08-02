@@ -11,7 +11,7 @@ import ignore from "ignore";
 const MapSection = () => {
     // initial zoom, center from url query
     const router = useRouter();
-    const query = useMemo(() => new URLSearchParams(router.asPath.slice(1)), []);
+    const query = useMemo(() => new URLSearchParams(router.asPath.slice(1)), [router.asPath]);
 
     const initialZoom = useMemo(
         () => (query.get('zoom') ? Number(query.get('zoom')) : INITIAL_ZOOM),
