@@ -48,7 +48,6 @@ export default Home;
 export async function getStaticProps() {
     const menus = (await import('../public/menus.json')).default;
     const stores = (await import('../public/store.json')).default as Store[];
-
     /**
      const stores = await fetch('' +
      `${process.env.NEXT_PUBLIC_API_URL}/api/stores`)
