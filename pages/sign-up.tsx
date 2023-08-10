@@ -94,7 +94,7 @@ const SignUp: NextPage<Props> = ({ menus }) => {
         }
     }, [checkBoxes]);
 
-    const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
 
         if (!isValidUsername) {
@@ -119,7 +119,7 @@ const SignUp: NextPage<Props> = ({ menus }) => {
     return (
         <Fragment>
             <main style={{ width: '100%', height: '100%', overflow: 'hidden'}}>
-                <form action="post" onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <table className={styles.signUpTable}>
                         <thead>
                         <tr>
