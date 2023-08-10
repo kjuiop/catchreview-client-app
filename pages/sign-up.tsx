@@ -14,14 +14,14 @@ interface Props {
 
 const SignUp: NextPage<Props> = ({ menus }) => {
 
-    const [email, setEmail] = useState(``)
-    const [isValidEmail, setIsValidEmail] = useState(true);
-    const handleEmailChange = (e) => {
+    const [username, setUsername] = useState(``)
+    const [isValidUsername, setIsValidUsername] = useState(true);
+    const handleUsernameChange = (e) => {
         const newEmail = e.target.value;
-        setEmail(newEmail)
+        setUsername(newEmail)
 
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        setIsValidEmail(emailRegex.test(newEmail));
+        setIsValidUsername(emailRegex.test(newEmail));
     }
 
     const [nickname, setNickname] = useState('');
@@ -94,10 +94,32 @@ const SignUp: NextPage<Props> = ({ menus }) => {
         }
     }, [checkBoxes]);
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (!isValidUsername) {
+            alert("올바른 이메일을 입력해주세요.");
+            return;
+        }
+
+        if (!allAgreed) {
+            alert("개인정보 및 회원 약관에 동의를 해주세요.");
+            return;
+        }
+
+        const userData = {
+            username,
+            nickname,
+            password,
+        };
+
+        console.log("userData : ", userData);
+    }
+
     return (
         <Fragment>
             <main style={{ width: '100%', height: '100%', overflow: 'hidden'}}>
-                <form action="post">
+                <form action="post" onSubmit={handleSubmit}>
                     <table className={styles.signUpTable}>
                         <thead>
                         <tr>
@@ -124,12 +146,13 @@ const SignUp: NextPage<Props> = ({ menus }) => {
                             <td>
                                 <input type="text"
                                        name='username'
-                                       value={email}
-                                       onChange={handleEmailChange}
-                                       className={!isValidEmail ? styles.invalid : ''}
+                                       value={username}
+                                       onChange={handleUsernameChange}
+                                       required={true}
+                                       className={!isValidUsername ? styles.invalid : ''}
                                        placeholder='이메일'
                                 />
-                                {isValidEmail ? null : <p className={styles.error}>유효한 이메일 주소를 입력해주세요.</p>}
+                                {isValidUsername ? null : <p className={styles.error}>유효한 이메일 주소를 입력해주세요.</p>}
                             </td>
                         </tr>
                         <tr>
@@ -138,6 +161,7 @@ const SignUp: NextPage<Props> = ({ menus }) => {
                                        name='nickname'
                                        value={nickname}
                                        onChange={handleNicknameChange}
+                                       required={true}
                                        className={!isValidNickname ? styles.invalid : ''}
                                        placeholder='닉네임'
                                 />
@@ -152,6 +176,7 @@ const SignUp: NextPage<Props> = ({ menus }) => {
                                        name='password'
                                        value={password}
                                        onChange={handlePasswordChange}
+                                       required={true}
                                        className={!isValidPassword ? styles.invalid : ''}
                                        placeholder='비밀번호 확인'/>
                                 {!isValidPassword && (
@@ -222,7 +247,11 @@ const SignUp: NextPage<Props> = ({ menus }) => {
                         </tr>
                         <tr>
                             <td>
-                                <button>회원가입 완료</button>
+                                <button
+                                    type="submit"
+                                >
+                                    회원가입 완료
+                                </button>
                             </td>
                         </tr>
                         </tbody>
