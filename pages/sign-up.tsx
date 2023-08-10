@@ -66,34 +66,29 @@ const SignUp: NextPage<Props> = ({ menus }) => {
                         </tr>
                         <tr>
                             <td>
-                                <input name='birth' type="text" placeholder='셍년월일'/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
                                 <div className={styles.termTable}>
                                     <div className={styles.termHeader}>
                                         <div className={styles.col20}>
-                                            <input type="checkbox"/>
+                                            <input type="checkbox" className={styles.checkBox} />
                                         </div>
-                                        <div className={styles.label}>
+                                        <div className={styles.checkboxLabel}>
                                             전체 동의
                                         </div>
                                     </div>
                                     <div className={styles.termBody}>
                                         <div className={styles.line}>
                                             <div className={styles.col20}>
-                                                <input type="checkbox"/>
+                                                <input type="checkbox" className={styles.checkBox} />
                                             </div>
-                                            <div className={styles.label}>
+                                            <div className={styles.checkboxLabel}>
                                                 (필수) 개인회원 약관에 동의
                                             </div>
                                         </div>
                                         <div className={styles.line}>
                                             <div className={styles.col20}>
-                                                <input type="checkbox"/>
+                                                <input type="checkbox" className={styles.checkBox} />
                                             </div>
-                                            <div className={styles.label}>
+                                            <div className={styles.checkboxLabel}>
                                                 (필수) 개인정보 수집 및 이용에 동의
                                             </div>
                                         </div>
