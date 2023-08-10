@@ -5,6 +5,7 @@ import BottomBar from "../components/home/BottomBar";
 import {Menu} from "../types/menu";
 import {NextPage} from "next";
 import useMenus from "../hooks/menu/useMenus";
+import Link from "next/link";
 
 interface Props {
     menus: Menu[];
@@ -50,8 +51,22 @@ const Login: NextPage<Props> = ({ menus }) => {
                         <tr>
                             <td>
                                 <ol>
-                                    <li><a href="/sign-up">회원가입</a></li>
-                                    <li><a href="#">아이디/비밀번호 찾기</a></li>
+                                    <li>
+                                        <Link
+                                            href={`/sign-up`}
+                                            aria-label="회원가입으로 이동"
+                                        >
+                                            회원가입
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            href={`/`}
+                                            aria-label="아이디/비밀번호 찾기로 이동"
+                                        >
+                                            아이디/비밀번호 찾기
+                                        </Link>
+                                    </li>
                                 </ol>
                             </td>
                         </tr>
