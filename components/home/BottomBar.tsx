@@ -21,7 +21,6 @@ const BottomBar = () => {
 
     const { data: menus } = useSWR<Menu[]>(MENU_KEY)
     const [currentMenuId, setCurrentMenuId] = useState(1)
-    console.log(menus)
 
     if (!menus) return  null;
     return (
