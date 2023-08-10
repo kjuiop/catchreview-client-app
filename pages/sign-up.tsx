@@ -25,14 +25,21 @@ const SignUp: NextPage<Props> = ({ menus }) => {
     }
 
     const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [isValidPassword, setIsValidPassword] = useState(true);
+    const [isValidConfirmation, setIsValidConfirmation] = useState(true);
+
     const handlePasswordChange = (e) => {
         const newPassword = e.target.value;
         setPassword(newPassword)
-
-        const isValid = validatePassword(newPassword)
-        setIsValidPassword(isValid)
+        setIsValidPassword(validatePassword(newPassword));
     }
+
+    const handleConfirmPasswordChange = (e) => {
+        const newConfirmPassword = e.target.value;
+        setConfirmPassword(newConfirmPassword);
+        setIsValidConfirmation(password === newConfirmPassword);
+    };
 
     const validatePassword = (password) => {
         if (password.length < 8) {
@@ -133,7 +140,16 @@ const SignUp: NextPage<Props> = ({ menus }) => {
                         </tr>
                         <tr>
                             <td>
-                                <input name='password' type="password" placeholder='비밀번호 확인'/>
+                                <input type="password"
+                                       name='repassword'
+                                       value={confirmPassword}
+                                       onChange={handleConfirmPasswordChange}
+                                       className={!isValidConfirmation ? styles.invalid : ''}
+                                       placeholder='비밀번호 확인'
+                                />
+                                {!isValidConfirmation && (
+                                    <p className={styles.error}>비밀번호가 일치하지 않습니다.</p>
+                                )}
                             </td>
                         </tr>
                         <tr>
