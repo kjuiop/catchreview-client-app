@@ -13,6 +13,16 @@ interface Props {
 
 const SignUp: NextPage<Props> = ({ menus }) => {
 
+    const [email, setEmail] = useState(``)
+    const [isValidEmail, setIsValidEmail] = useState(true);
+    const handleEmailChange = (e) => {
+        const newEmail = e.target.value;
+        setEmail(newEmail)
+
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        setIsValidEmail(emailRegex.test(newEmail));
+    }
+
     const { initializeMenus } = useMenus();
     useEffect( () => {
         initializeMenus(menus);
@@ -76,12 +86,22 @@ const SignUp: NextPage<Props> = ({ menus }) => {
                         <tbody>
                         <tr>
                             <td>
-                                <input name='username' type="text" placeholder='아이디'/>
+                                <input type="text"
+                                       name='username'
+                                       value={email}
+                                       onChange={handleEmailChange}
+                                       className={isValidEmail ? styles.valid : ''}
+                                       placeholder='이메일'
+                                />
+                                {isValidEmail ? null : <p className={styles.error}>유효한 이메일 주소를 입력해주세요.</p>}
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input name='password' type="text" placeholder='비밀번호'/>
+                                <input name='password'
+                                       type="password"
+                                       placeholder='비밀번호'
+                                />
                             </td>
                         </tr>
                         <tr>

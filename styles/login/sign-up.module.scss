@@ -67,6 +67,16 @@
             }
         }
     }
+
+    .invalid {
+        border: 2px solid red;
+    }
+
+    .error {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+    }
 }
 
 .termTable {
