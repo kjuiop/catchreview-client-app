@@ -1,4 +1,4 @@
-import {Fragment, useEffect, useState} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import styles from '../styles/login/sign-up.module.scss';
 import BottomBar from "../components/home/BottomBar";
 import {Menu} from "../types/menu";
@@ -16,7 +16,7 @@ const SignUp: NextPage<Props> = ({ menus }) => {
 
     const [username, setUsername] = useState(``)
     const [isValidUsername, setIsValidUsername] = useState(true);
-    const handleUsernameChange = (e) => {
+    const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newEmail = e.target.value;
         setUsername(newEmail)
 
@@ -26,7 +26,7 @@ const SignUp: NextPage<Props> = ({ menus }) => {
 
     const [nickname, setNickname] = useState('');
     const [isValidNickname, setIsValidNickname] = useState(true);
-    const handleNicknameChange = (e) => {
+    const handleNicknameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newNickname = e.target.value;
         setNickname(newNickname);
         setIsValidNickname(newNickname.length >= 3);
@@ -37,19 +37,19 @@ const SignUp: NextPage<Props> = ({ menus }) => {
     const [isValidPassword, setIsValidPassword] = useState(true);
     const [isValidConfirmation, setIsValidConfirmation] = useState(true);
 
-    const handlePasswordChange = (e) => {
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newPassword = e.target.value;
         setPassword(newPassword)
         setIsValidPassword(validatePassword(newPassword));
     }
 
-    const handleConfirmPasswordChange = (e) => {
+    const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newConfirmPassword = e.target.value;
         setConfirmPassword(newConfirmPassword);
         setIsValidConfirmation(password === newConfirmPassword);
     };
 
-    const validatePassword = (password) => {
+    const validatePassword = (password: string) => {
         if (password.length < 8) {
             return false;
         }
@@ -70,7 +70,7 @@ const SignUp: NextPage<Props> = ({ menus }) => {
         privacyYn : false,
     });
 
-    const handleAllAgreeChange = (e) => {
+    const handleAllAgreeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const isChecked = e.target.checked;
         setAllAgreed(isChecked);
         setCheckBoxes({
@@ -79,7 +79,7 @@ const SignUp: NextPage<Props> = ({ menus }) => {
         })
     }
 
-    const handleCheckBoxChange = (e) => {
+    const handleCheckBoxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, checked } = e.target;
         setCheckBoxes({
             ...checkBoxes,
@@ -94,7 +94,7 @@ const SignUp: NextPage<Props> = ({ menus }) => {
         }
     }, [checkBoxes]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
 
         if (!isValidUsername) {
