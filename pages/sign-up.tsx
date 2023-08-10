@@ -1,4 +1,4 @@
-import {Fragment, useEffect} from 'react';
+import {Fragment, useEffect, useState} from 'react';
 import styles from '../styles/login/sign-up.module.scss';
 import BottomBar from "../components/home/BottomBar";
 import {Menu} from "../types/menu";
@@ -12,11 +12,41 @@ interface Props {
 
 
 const SignUp: NextPage<Props> = ({ menus }) => {
-    const { initializeMenus } = useMenus();
 
+    const { initializeMenus } = useMenus();
     useEffect( () => {
         initializeMenus(menus);
     }, [initializeMenus, menus]);
+
+    const [allAgreed, setAllAgreed] = useState(false);
+    const [checkBoxes, setCheckBoxes] = useState({
+        policyYn: false,
+        privacyYn : false,
+    });
+
+    const handleAllAgreeChange = (e) => {
+        const isChecked = e.target.checked;
+        setAllAgreed(isChecked);
+        setCheckBoxes({
+            policyYn: isChecked,
+            privacyYn: isChecked,
+        })
+    }
+
+    const handleCheckBoxChange = (e) => {
+        const { name, checked } = e.target;
+        setCheckBoxes({
+            ...checkBoxes,
+            [name]: checked,
+        });
+    }
+
+    useEffect(() => {
+        const allChecked = checkBoxes.policyYn && checkBoxes.privacyYn;
+        if (allAgreed !== allChecked) {
+            setAllAgreed(allChecked);
+        }
+    }, [checkBoxes]);
 
     return (
         <Fragment>
@@ -69,28 +99,43 @@ const SignUp: NextPage<Props> = ({ menus }) => {
                                 <div className={styles.termTable}>
                                     <div className={styles.termHeader}>
                                         <div className={styles.col20}>
-                                            <input type="checkbox" className={styles.checkBox} />
+                                            <input type="checkbox"
+                                                   id="allAgree"
+                                                   className={styles.checkBox}
+                                                   checked={allAgreed}
+                                                   onChange={handleAllAgreeChange}
+                                            />
                                         </div>
-                                        <div className={styles.checkboxLabel}>
+                                        <label className={styles.checkboxLabel} htmlFor="allAgree">
                                             전체 동의
-                                        </div>
+                                        </label>
                                     </div>
                                     <div className={styles.termBody}>
                                         <div className={styles.line}>
                                             <div className={styles.col20}>
-                                                <input type="checkbox" className={styles.checkBox} />
+                                                <input type="checkbox"
+                                                       name="policyYn"
+                                                       className={styles.checkBox}
+                                                       checked={checkBoxes.policyYn}
+                                                       onChange={handleCheckBoxChange}
+                                                />
                                             </div>
-                                            <div className={styles.checkboxLabel}>
+                                            <label className={styles.checkboxLabel}>
                                                 (필수) 개인회원 약관에 동의
-                                            </div>
+                                            </label>
                                         </div>
                                         <div className={styles.line}>
                                             <div className={styles.col20}>
-                                                <input type="checkbox" className={styles.checkBox} />
+                                                <input type="checkbox"
+                                                       name="privacyYn"
+                                                       className={styles.checkBox}
+                                                       checked={checkBoxes.privacyYn}
+                                                       onChange={handleCheckBoxChange}
+                                                />
                                             </div>
-                                            <div className={styles.checkboxLabel}>
+                                            <label className={styles.checkboxLabel}>
                                                 (필수) 개인정보 수집 및 이용에 동의
-                                            </div>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
