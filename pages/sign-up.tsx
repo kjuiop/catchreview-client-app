@@ -5,6 +5,7 @@ import {Menu} from "../types/menu";
 import {NextPage} from "next";
 import useMenus from "../hooks/menu/useMenus";
 import Image from "next/image";
+import {validateConfig} from "next/dist/server/config-shared";
 
 interface Props {
     menus: Menu[];
@@ -22,6 +23,27 @@ const SignUp: NextPage<Props> = ({ menus }) => {
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         setIsValidEmail(emailRegex.test(newEmail));
     }
+
+    const [password, setPassword] = useState('')
+    const [isValidPassword, setIsValidPassword] = useState(true);
+    const handlePasswordChange = (e) => {
+        const newPassword = e.target.value;
+        setPassword(newPassword)
+
+        const isValid = validatePassword(newPassword)
+        setIsValidPassword(isValid)
+    }
+
+    const validatePassword = (password) => {
+        if (password.length < 8) {
+            return false;
+        }
+
+        const hasNumber = /\d/.test(password);
+        const hasLetter = /[a-zA-Z]/.test(password);
+        return hasNumber && hasLetter;
+    }
+
 
     const { initializeMenus } = useMenus();
     useEffect( () => {
@@ -90,7 +112,7 @@ const SignUp: NextPage<Props> = ({ menus }) => {
                                        name='username'
                                        value={email}
                                        onChange={handleEmailChange}
-                                       className={isValidEmail ? styles.valid : ''}
+                                       className={!isValidEmail ? styles.invalid : ''}
                                        placeholder='이메일'
                                 />
                                 {isValidEmail ? null : <p className={styles.error}>유효한 이메일 주소를 입력해주세요.</p>}
@@ -98,15 +120,20 @@ const SignUp: NextPage<Props> = ({ menus }) => {
                         </tr>
                         <tr>
                             <td>
-                                <input name='password'
-                                       type="password"
-                                       placeholder='비밀번호'
-                                />
+                                <input type="password"
+                                       name='password'
+                                       value={password}
+                                       onChange={handlePasswordChange}
+                                       className={!isValidPassword ? styles.invalid : ''}
+                                       placeholder='비밀번호 확인'/>
+                                {!isValidPassword && (
+                                    <p className={styles.error}>비밀번호는 최소 8자 이상이어야 하며, 숫자와 문자 조합이어야 합니다.</p>
+                                )}
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input name='password' type="text" placeholder='비밀번호 확인'/>
+                                <input name='password' type="password" placeholder='비밀번호 확인'/>
                             </td>
                         </tr>
                         <tr>
