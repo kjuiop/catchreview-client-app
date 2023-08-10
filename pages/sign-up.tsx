@@ -24,6 +24,14 @@ const SignUp: NextPage<Props> = ({ menus }) => {
         setIsValidEmail(emailRegex.test(newEmail));
     }
 
+    const [nickname, setNickname] = useState('');
+    const [isValidNickname, setIsValidNickname] = useState(true);
+    const handleNicknameChange = (e) => {
+        const newNickname = e.target.value;
+        setNickname(newNickname);
+        setIsValidNickname(newNickname.length >= 3);
+    }
+
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('');
     const [isValidPassword, setIsValidPassword] = useState(true);
@@ -50,7 +58,6 @@ const SignUp: NextPage<Props> = ({ menus }) => {
         const hasLetter = /[a-zA-Z]/.test(password);
         return hasNumber && hasLetter;
     }
-
 
     const { initializeMenus } = useMenus();
     useEffect( () => {
@@ -127,6 +134,20 @@ const SignUp: NextPage<Props> = ({ menus }) => {
                         </tr>
                         <tr>
                             <td>
+                                <input type="text"
+                                       name='nickname'
+                                       value={nickname}
+                                       onChange={handleNicknameChange}
+                                       className={!isValidNickname ? styles.invalid : ''}
+                                       placeholder='닉네임'
+                                />
+                                {!isValidNickname && (
+                                    <p className={styles.error}>닉네임은 최소 3자 이상이어야 합니다.</p>
+                                )}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 <input type="password"
                                        name='password'
                                        value={password}
@@ -150,11 +171,6 @@ const SignUp: NextPage<Props> = ({ menus }) => {
                                 {!isValidConfirmation && (
                                     <p className={styles.error}>비밀번호가 일치하지 않습니다.</p>
                                 )}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input name='nickname' type="text" placeholder='닉네임'/>
                             </td>
                         </tr>
                         <tr>
